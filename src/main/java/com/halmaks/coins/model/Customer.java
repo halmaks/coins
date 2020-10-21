@@ -28,7 +28,7 @@ public class Customer {
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        public long getId() {
+        public int getId() {
         return id;
     }
     public void setId(int id) {

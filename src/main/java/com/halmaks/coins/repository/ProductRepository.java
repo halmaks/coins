@@ -1,10 +1,9 @@
 package com.halmaks.coins.repository;
 
+import com.halmaks.coins.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.halmaks.coins.model.Customer;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer>{
-
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 }

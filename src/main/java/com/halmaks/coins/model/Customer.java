@@ -28,7 +28,7 @@ public class Customer {
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        public int getId() {
+    public int getId() {
         return id;
     }
     public void setId(int id) {
@@ -61,8 +61,9 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email
-       + "]";
+        return "Customer [id=" + id + ", name=" + name +
+                ", phone=" + phone + ", email=" + email +
+                "]";
     }
  
 }

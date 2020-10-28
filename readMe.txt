@@ -140,6 +140,39 @@ Transfer-Encoding: chunked
 14:17:53 maksim ~ $ 
 
 
+exapple PUT with id from httpie:
+
+14:50:06 maksim ~/workspace/coins (master) $ http PUT http://halmaks-lp:8080/api/v1/customer/11 phone=4444444
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Date: Sun, 25 Oct 2020 11:50:47 GMT
+Transfer-Encoding: chunked
+
+{
+    "email": null,
+    "id": 11,
+    "name": null,
+    "phone": "4444444"
+}
+
+14:50:47 maksim ~/workspace/coins (master) $ 
+
+15:00:40 maksim ~/workspace/coins (master) $ http PUT http://halmaks-lp:8080/api/v1/customer/11 phone=4444444 email=Bob@yahoo.com name=Bob
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Date: Sun, 25 Oct 2020 12:01:49 GMT
+Transfer-Encoding: chunked
+
+{
+    "email": "Bob@yahoo.com",
+    "id": 11,
+    "name": "Bob",
+    "phone": "4444444"
+}
+
+15:01:49 maksim ~/workspace/coins (master) $
+
+
 example DELETE with id from httpie:
 
 14:34:41 maksim ~ $ http DELETE http://halmaks-lp:8080/api/v1/customer/12
@@ -153,6 +186,21 @@ Transfer-Encoding: chunked
 }
 
 14:42:45 maksim ~ $ 
+
+01:04:34 maksim ~ $ http POST http://halmaks-lp:8080/api/v1/product name=display description="29 inch, 2560 x 1080" price=210
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Date: Wed, 28 Oct 2020 22:05:24 GMT
+Transfer-Encoding: chunked
+
+{
+    "description": "29 inch, 2560 x 1080",
+    "id": 4,
+    "name": "display",
+    "price": 210
+}
+
+01:05:24 maksim ~ $ 
 
 
 

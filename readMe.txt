@@ -202,6 +202,19 @@ Transfer-Encoding: chunked
 
 01:05:24 maksim ~ $ 
 
+04:46:19 maksim ~/workspace/coins (master) $ http POST http://halmaks-lp:8080/api/v1/product-photo url="https://www.nathing.com/nathing/image-11111.jpg" productId=5
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Date: Sat, 31 Oct 2020 01:46:57 GMT
+Transfer-Encoding: chunked
+
+{
+    "id": 8,
+    "productId": 5,
+    "url": "https://www.nathing.com/nathing/image-11111.jpg"
+}
+
+04:46:57 maksim ~/workspace/coins (master) $
 
 
 

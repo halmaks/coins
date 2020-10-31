@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product-photo")
+@Table(name = "product_photo")
 public class ProductPhoto {
     private int id;
     private String url;
@@ -34,6 +34,11 @@ public class ProductPhoto {
 
     @Column(name = "product_id", nullable = false)
     public int getProductId() { return productId; }
+
+    @Column(name = "product_id", nullable = false)
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 
     @Override
     public String toString() {

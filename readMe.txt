@@ -17,6 +17,10 @@ or:
 $ docker build -t coins .
 $ docker run --rm -p 8080:8080 coins
 
+or:
+$ docker build -t coins .
+$ docker run -d --rm --net="host" -it coins
+
 
 example POST from httpie:
 

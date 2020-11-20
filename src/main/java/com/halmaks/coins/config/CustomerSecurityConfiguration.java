@@ -9,8 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 // https://dzone.com/articles/spring-boot-oauth2-getting-the-authorization-code
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class CustomerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override

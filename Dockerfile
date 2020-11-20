@@ -1,7 +1,7 @@
 FROM openjdk:8-jre
 WORKDIR /
 #add required jars
-ADD coins-0.0.1-SNAPSHOT.jar coins-0.0.1-SNAPSHOT.jar
+ADD target/coins-0.0.1-SNAPSHOT.jar coins-0.0.1-SNAPSHOT.jar
 
 #expose port
 EXPOSE 8080

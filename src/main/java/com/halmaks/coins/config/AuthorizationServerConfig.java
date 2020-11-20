@@ -12,7 +12,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("javainuse").secret("secret").authorizedGrantTypes("authorization_")
+		clients.inMemory().withClient("halmaks").secret("secret").authorizedGrantTypes("authorization_code")
 			.scopes("read").authorities("CLIENT");
 		}
 }

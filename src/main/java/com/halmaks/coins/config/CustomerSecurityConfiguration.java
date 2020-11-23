@@ -15,12 +15,12 @@ public class CustomerSecurityConfiguration extends WebSecurityConfigurerAdapter 
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**");
+		web.ignoring().antMatchers("/api/v1/product/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/api/v1/customer")
+		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/api/v1/customer/**")
 			.hasAnyRole("ADMIN").anyRequest().authenticated().and().formLogin()
 			.permitAll().and().logout().permitAll();
 

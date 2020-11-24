@@ -14,24 +14,26 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class CustomerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/api/v1/product/**");
-	}
-
-	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/api/v1/customer/**")
-			.hasAnyRole("ADMIN").anyRequest().authenticated().and().formLogin()
-			.permitAll().and().logout().permitAll();
+		http.authorizeRequests()
+				.antMatchers("/api/v1/authenticated/**").authenticated()
+				.and()
+				.httpBasic()
+				.and()
+				.logout().logoutSuccessUrl("/");
 
-		http.csrf().disable();
 	}
 
-	@Override
-	public void configure(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-	    authenticationMgr.inMemoryAuthentication().withUser("admin").password("admin")
-		    .authorities("ROLE_ADMIN");
-	}
+//	@Override
+//	public void configure(WebSecurity web) throws Exception {
+//		web.ignoring().antMatchers("/api/v1/product/**");
+//	}
+
+//	@Override
+//	public void configure(AuthenticationManagerBuilder authenticationMgr) throws Exception {
+//	    authenticationMgr.inMemoryAuthentication().withUser("admin").password("admin")
+//		    .authorities("ROLE_ADMIN");
+//	}
 }
 			
 

@@ -1,5 +1,6 @@
 package com.halmaks.coins.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,10 +23,15 @@ import com.halmaks.coins.model.Customer;
 import com.halmaks.coins.repository.CustomerRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/authenticated")
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
+
+    @GetMapping("/")
+    public String pageForAuthenticatedUsers(Principal principal) {
+        return "secured part of web service: " + principal.getName();
+    }
 
     @GetMapping("/customer")
     public List<Customer> getAllCustomer() {

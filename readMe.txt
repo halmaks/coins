@@ -1,4 +1,4 @@
-https://www.javaguides.net/2019/01/springboot-postgresql-jpa-hibernate-crud-restful-api-tutorial.html?m=1
+
 
 for run:
 
@@ -21,10 +21,16 @@ or:
 $ docker build -t coins .
 $ docker run -d --rm --net="host" -it coins
 
+# run multiple containers of the same image and expose different ports
+mvn compile
+mvn package
+docker build -t coins .
+docker run -d --rm --net="host" --name coins-1 -it coins --server.port=8081
+docker run -d --rm --net="host" --name coins-2 -it coins --server.port=8080
 
 example POST from httpie:
 
-13:55:07 maksim ~ $ http POST http://halmaks-lp:8080/api/v1/customer name=sania phone=33384 email=sania@gmail.com
+13:55:07 maksim ~ $ http POST http://halmaks-lp:8080/api/v1/authenticated/customer name=sania phone=33384 email=sania@gmail.com
 HTTP/1.1 200 
 Content-Type: application/json;charset=UTF-8
 Date: Sun, 25 Oct 2020 10:59:05 GMT
@@ -42,7 +48,7 @@ Transfer-Encoding: chunked
 
 example GET with id from httpie:
 
-14:23:58 maksim ~ $ http http://halmaks-lp:8080/api/v1/customer/2
+14:23:58 maksim ~ $ http http://halmaks-lp:8080/api/v1/authenticated/customer/2
 HTTP/1.1 200 
 Content-Type: application/json;charset=UTF-8
 Date: Sun, 25 Oct 2020 11:34:41 GMT
@@ -60,7 +66,7 @@ Transfer-Encoding: chunked
 
 example GET all from httpie:
 
-14:17:02 maksim ~ $ http GET http://halmaks-lp:8080/api/v1/customer
+14:17:02 maksim ~ $ http GET http://halmaks-lp:8080/api/v1/authenticated/customer
 HTTP/1.1 200 
 Content-Type: application/json;charset=UTF-8
 Date: Sun, 25 Oct 2020 11:17:53 GMT
@@ -146,7 +152,7 @@ Transfer-Encoding: chunked
 
 exapple PUT with id from httpie:
 
-14:50:06 maksim ~/workspace/coins (master) $ http PUT http://halmaks-lp:8080/api/v1/customer/11 phone=4444444
+14:50:06 maksim ~/workspace/coins (master) $ http PUT http://halmaks-lp:8080/api/v1/authenticated/customer/11 phone=4444444
 HTTP/1.1 200 
 Content-Type: application/json;charset=UTF-8
 Date: Sun, 25 Oct 2020 11:50:47 GMT
@@ -179,7 +185,7 @@ Transfer-Encoding: chunked
 
 example DELETE with id from httpie:
 
-14:34:41 maksim ~ $ http DELETE http://halmaks-lp:8080/api/v1/customer/12
+14:34:41 maksim ~ $ http DELETE http://halmaks-lp:8080/api/v1/authenticated/customer/12
 HTTP/1.1 200 
 Content-Type: application/json;charset=UTF-8
 Date: Sun, 25 Oct 2020 11:42:45 GMT

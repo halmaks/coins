@@ -27,11 +27,11 @@ public class CustomerSecurityConfiguration extends WebSecurityConfigurerAdapter 
 
 	}
 
-	@Bean
-	public JdbcUserDetailsManager users(DataSource dataSource) {
-		JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-		return users;
-	}
+//	@Bean
+//	public JdbcUserDetailsManager users(DataSource dataSource) {
+//		JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
+//		return users;
+//	}
 }
 			
 

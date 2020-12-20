@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 import javax.sql.DataSource;
@@ -29,8 +31,27 @@ public class CustomerSecurityConfiguration extends WebSecurityConfigurerAdapter 
 
 	@Bean
 	public JdbcUserDetailsManager users(DataSource dataSource) {
-		JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-		return users;
+		UserDetails user = User.builder()
+			.username("user")
+			.password("{user0909pass!!ddd___--$$")
+			.roles("USER")
+			.build();
+		UserDetails admin = User.builder()
+			.username("admin")
+			.password("dffiidkjrekrererererefe")
+			.roles("ADMIN", "USER")
+			.build();
+		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+		if(jdbcUserDetailsManager.userExists(user.getUsername())) {
+			jdbcUserDetailsManager.deleteUser(user.getUsername());
+		}
+		if(jdbcUserDetailsManager.userExists(admin.getUsername())) {
+			jdbcUserDetailsManager.deleteUser(admin.getUsername());
+		}
+		jdbcUserDetailsManager.createUser(user);
+		jdbcUserDetailsManager.createUser(admin);
+		return jdbcUserDetailsManager;
+	
 	}
 }
 			

@@ -28,10 +28,10 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-//    @GetMapping("/")
-//    public String pageForAuthenticatedUsers(Principal principal) {
-//        return "secured part of web service: " + principal.getName();
-//    }
+    @GetMapping("/")
+    public String pageForAuthenticatedUsers(Principal principal) {
+        return "secured part of web service: " + principal.getName();
+    }
 
     @GetMapping("/customer")
     public List<Customer> getAllCustomer() {
